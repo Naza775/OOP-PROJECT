@@ -9,25 +9,22 @@ private:
     bool isCheckedOut;
     std::string dueDate;
 public:
-    LibraryItem();
-    LibraryItem(const std::string& Title, const std::string& dueDate, bool isCheckedOut);
+    LibraryItem(){};
+    LibraryItem(const std::string& Title, const std::string& dueDate, bool isCheckedOut){};
 
-    ~LibraryItem();
+    ~LibraryItem(){};
 
-    void inputItem();
-    void displayItem() const;
+    void inputItem(){};
+    void displayItem() const{};
 
-    void setTitle(const std::string& title);
-    std::string getTitle() const;
+    void setTitle(const std::string& title){};
+    std::string getTitle() const{};
 
-    void setIsCheckedOut(bool isCheckedOut );
+    void setIsCheckedOut(bool isCheckedOut ){};
     bool getIsCheckedOut() ;
 
-    void setDueDate( const std::string& dueDate);
-    std::string getDueDate() const;
-
-   
-
+    void setDueDate( const std::string& dueDate){};
+    std::string getDueDate() const{};
     
 };
-#endif
+#endif //LIBRARY_ITEM_H

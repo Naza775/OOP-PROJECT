@@ -10,7 +10,7 @@ class Book{
 
     public:
     // Constructor
-    Book(std::string& title,std::string& author,std::string& isbn){};
+    Book(const std::string& title,const std::string& author,const std::string& isbn){};
     //Getters
     void gettitle()const{};
     void getauthor()const{};

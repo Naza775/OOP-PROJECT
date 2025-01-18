@@ -3,42 +3,41 @@
 
 class Book {
 private:
-    std::string Title;
-    std::string Author;
-    std::string ISBN;
+    std::string title;
+    std::string author;
+    std::string isbn;
 
 public:
     Book(const std::string& title = "", const std::string& author = "", const std::string& isbn = "")
-        : Title(title), Author(author), ISBN(isbn) {}
+        : title(title), author(author), isbn(isbn) {}
 
     std::string getTitle() const {
-        return Title;
+        return title;
     }
 
     std::string getAuthor() const {
-        return Author;
+        return author;
     }
-
     std::string getISBN() const {
-        return ISBN;
+        return isbn;
     }
 
     void setTitle(const std::string& newTitle) {
-        Title = newTitle;
+        title = newTitle;
     }
 
     void setAuthor(const std::string& newAuthor) {
-        Author = newAuthor;
+        author = newAuthor;
     }
 
-    void setISBN(const std::string& newISBN) {
-        ISBN = newISBN;
+    void setISBN(std::string& newISBN) {
+        isbn = newISBN;
     }
 
     void bookinfo() const{
-        std::cout<<"Title:"<<Title<<std::endl;
-        std::cout<<"Author:"<<Author<<std::endl;
-        std::cout<<"ISBN:"<<ISBN<<std::endl;
+        std::cout<<"Title:"<<title<<std::endl;
+        std::cout<<"Author:"<<author<<std::endl;
+        std::cout<<"ISBN:"<<isbn<<std::endl;
 
     }
 };

@@ -3,7 +3,8 @@
 #include <string>
 
 // Constructor
-Patron::Patron(const std::string& name, const std::string& libraryCardNumber): name(name), libraryCardNumber(libraryCardNumber) {}
+Patron::Patron(const std::string& name, const std::string& libraryCardNumber)
+: name(name), libraryCardNumber(libraryCardNumber) {}
 
 // Getters
 std::string Patron::getName() const { return name; }

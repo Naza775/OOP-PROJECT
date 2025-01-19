@@ -1,29 +1,20 @@
 #include "patron.h"
 #include <iostream>
+#include <string>
 
+// Constructor
+Patron::Patron(const std::string& name, const std::string& libraryCardNumber): name(name), libraryCardNumber(libraryCardNumber) {}
 
+// Getters
+std::string Patron::getName() const { return name; }
+std::string Patron::getLibraryCardNumber() const { return libraryCardNumber; }
 
-Patron(const std::string& name, const std::string& libraryCardNumber){}: name(name), libraryCardNumber(libraryCardNumber)
+// Setters
+void Patron::setContactInfo(const std::string& contactInfo) { this->contactInfo = contactInfo; }
 
-std::string Patron::getName() const { 
-    return name; 
-}
-void Patron::setName(const std::string& name) { 
-    this->name = name; 
-}
-std::string Patron::getLibraryCardNumber() const { 
-    return libraryCardNumber; 
-}
-void Patron::setLibraryCardNumber(const int& libraryCardNumber) { 
-    this->libraryCardNumber = libraryCardNumber; 
-}
+// Additional Functions
+void Patron::updateContactInfo(const std::string& newContactInfo) { setContactInfo(newContactInfo); }
 
-// Updating the contact info
-void Patron::updateContactInfo(const std::string& newContactInfo) {
-    setName(newContactInfo);
-}
-
-// To check if patron can borrow more books
 bool Patron::canBorrowMoreBooks(int currentBorrowedCount, int maxLimit) const {
     return currentBorrowedCount < maxLimit;
 }

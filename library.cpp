@@ -12,44 +12,37 @@ void Library::addPatron(const Patron& patron) {
     std::cout << "Added patron: " << patron.getName() << std::endl;
 }
 
-bool Library::borrowBook(const std::string& isbn, const std::string& patronCardNumber) {
-    BookItem* bookToBorrow = nullptr;
-    for (auto& book : books) {
-        if (book.getISBN() == isbn && !book.getIsCheckedOut()) {
-            bookToBorrow = &book;
-            break;
+void Library::borrowBook(const std::string& isbn, const std::string& patronCardNumber) {
+    auto bookIt = std::find_if(books.begin(), books.end(),
+                               [&](const BookItem& book) { return book.getISBN() == isbn; });
+
+    if (bookIt != books.end() && !bookIt->getIsCheckedOut()) {
+        bookIt->checkOut("01-01-2025"); 
+        for (size_t i = 0; i < patrons.size(); ++i) {
+            if (patrons[i].getLibraryCardNumber() == patronCardNumber) {
+                patronRecords[i].addBook(*bookIt);
+                break;
+            }
         }
+    } else {
+        std::cout << "Book is unavailable.\n";
     }
-
-    Patron* borrowingPatron = nullptr;
-    for (auto& patron : patrons) {
-        if (patron.getLibraryCardNumber() == patronCardNumber) {
-            borrowingPatron = &patron;
-            break;
-        }
-    }
-
-    if (!bookToBorrow || !borrowingPatron) {
-        std::cout << "Cannot process request.\n";
-        return false;
-    }
-
-    bookToBorrow->checkOut();
-    std::cout << "Book borrowed: " << bookToBorrow->getTitle() << "\n";
-    return true;
 }
 
-bool Library::returnBook(const std::string& isbn, const std::string& patronCardNumber) {
-    for (auto& book : books) {
-        if (book.getISBN() == isbn && book.getIsCheckedOut()) {
-            book.returnItem();
-            std::cout << "Book returned: " << book.getTitle() << std::endl;
-            return true;
+void Library::returnBook(const std::string& isbn, const std::string& patronCardNumber) {
+    for (size_t i = 0; i < patrons.size(); ++i) {
+        if (patrons[i].getLibraryCardNumber() == patronCardNumber) {
+            patronRecords[i].removeBook(isbn);
+            break;
         }
     }
 
-    std::cout << "Book not found or not checked out."<<std::endl;
-    return false;
+    auto bookIt = std::find_if(books.begin(), books.end(),
+                               [&](const BookItem& book) { return book.getISBN() == isbn; });
+
+    if (bookIt != books.end()) {
+        bookIt->returnItem();
+    }
 }
 
 void Library::searchBooksByTitle(const std::string& title) const {
@@ -66,8 +59,4 @@ void Library::searchBooksByAuthor(const std::string& author) const {
             book.printDetails();
         }
     }
-}
-
-void Library::generateLibraryReport() const {
-    std::cout << "Library Report:\nBooks: " << books.size() << ", Patrons: " << patrons.size() <<std::endl;
 }

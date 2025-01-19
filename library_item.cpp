@@ -4,6 +4,8 @@
 LibraryItem::LibraryItem(const std::string& title, const std::string& author,const std::string& isbn)
     : title(title), author(author),isCheckedOut(false), dueDate(0),isbn(isbn) {}
 
+LibraryItem::~LibraryItem() {}
+
 std::string LibraryItem::getTitle() const { 
     return title; 
 }
@@ -23,6 +25,3 @@ void LibraryItem::checkOut() { isCheckedOut = true; }
 void LibraryItem::returnItem() { isCheckedOut = false; }
 void LibraryItem::renewItem(int extraDays){};
 void LibraryItem::markAsLost() { isCheckedOut = false; }
-
-LibraryItem::LibraryItem(std::string title){};
-LibraryItem::author(std::string){};

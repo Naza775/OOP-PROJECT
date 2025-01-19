@@ -1,4 +1,4 @@
-#ifdef PATRON_H
+#ifndef PATRON_H
 #define PATRON_H
 #include <string>
 

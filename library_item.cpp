@@ -1,41 +1,28 @@
 #include "library_item.h"
 #include <iostream>
 
-// Constructor
-LibraryItem::LibraryItem(const std::string& itemTitle): title(itemTitle), isCheckedOut(false), dueDate(0) {}
+LibraryItem::LibraryItem(const std::string& title, const std::string& author,const std::string& isbn)
+    : title(title), author(author),isCheckedOut(false), dueDate(0),isbn(isbn) {}
 
-// Check out the library item
-void LibraryItem::checkOut() {
-    if (!isCheckedOut) {
-        isCheckedOut = true;
-        std::cout << "Library item checked out: " << title << std::endl;
-    } else {
-        std::cout << "Library item is already checked out." << std::endl;
-    }
+std::string LibraryItem::getTitle() const { 
+    return title; 
+}
+void LibraryItem::setDueDate(const int& dueDate) { 
+    this->dueDate = dueDate; 
 }
 
-// Return the library item
-void LibraryItem::returnItem() {
-    if (isCheckedOut) {
-        isCheckedOut = false;
-        std::cout << "Library item returned: " << title << std::endl;
-    } else {
-        std::cout << "Library item is not checked out." << std::endl;
-    }
+bool LibraryItem::getIsCheckedOut() const { 
+    return isCheckedOut;
+}
+int LibraryItem::getDueDate() const { 
+    return dueDate; 
 }
 
-// Renew the library item
-void LibraryItem::renewItem(int extraDays) {
-    dueDate += extraDays;
-    std::cout << "Library item renewed for " << extraDays << " extra days." << std::endl;
-}
+// Methods
+void LibraryItem::checkOut() { isCheckedOut = true; }
+void LibraryItem::returnItem() { isCheckedOut = false; }
+void LibraryItem::renewItem(int extraDays){};
+void LibraryItem::markAsLost() { isCheckedOut = false; }
 
-// Mark the library item as lost
-void LibraryItem::markAsLost() {
-    if (isCheckedOut) {
-        isCheckedOut = false;
-        std::cout << "Item marked as lost: " << title << std::endl;
-    } else {
-        std::cout << "Item is not currently checked out and cannot be marked as lost." << std::endl;
-    }
-}
+LibraryItem::LibraryItem(std::string title){};
+LibraryItem::author(std::string){};

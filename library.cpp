@@ -1,14 +1,15 @@
 #include "library.h"
 #include <iostream>
 
+
 void Library::addBook(const BookItem& book) {
     books.push_back(book);
-    std::cout << "Added book: " << book.getTitle() << "\n";
+    std::cout << "Added book: " << book.getTitle() << std::endl;
 }
 
 void Library::addPatron(const Patron& patron) {
     patrons.push_back(patron);
-    std::cout << "Added patron: " << patron.getName() << "\n";
+    std::cout << "Added patron: " << patron.getName() << std::endl;
 }
 
 bool Library::borrowBook(const std::string& isbn, const std::string& patronCardNumber) {
@@ -42,12 +43,12 @@ bool Library::returnBook(const std::string& isbn, const std::string& patronCardN
     for (auto& book : books) {
         if (book.getISBN() == isbn && book.getIsCheckedOut()) {
             book.returnItem();
-            std::cout << "Book returned: " << book.getTitle() << "\n";
+            std::cout << "Book returned: " << book.getTitle() << std::endl;
             return true;
         }
     }
 
-    std::cout << "Book not found or not checked out.\n";
+    std::cout << "Book not found or not checked out."<<std::endl;
     return false;
 }
 

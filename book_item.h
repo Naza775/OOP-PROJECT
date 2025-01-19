@@ -5,6 +5,7 @@
 
 class BookItem : public LibraryItem {
 private:
+    std::string title;
     std::string author; // The author of the book
     std::string isbn;   // The ISBN of the book
 
@@ -22,7 +23,7 @@ public:
 
     // Methods
     void printDetails() const{};              // Print details of the book
-    double calculateLateFees(int daysOverdue) const{}; // Calculate the late fees based on overdue days
+    int calculateLateFees(int daysOverdue) const{}; // Calculate the late fees based on overdue days
 };
 
 #endif // BOOK_ITEM_H

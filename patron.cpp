@@ -1,48 +1,29 @@
 #include "patron.h"
 #include <iostream>
-#include <iostream>
 
-// Default Constructor
-Patron::Patron()
-    : name(""), libraryCardNumber(""), contactInfo("") {}
 
-// Parameterized Constructor
-Patron::Patron(const std::string& name, const std::string& libraryCardNumber, const std::string& contactInfo)
-    : name(name), libraryCardNumber(libraryCardNumber), contactInfo(contactInfo) {}
 
-// Getter for Name
-std::string Patron::getName() const {
-    return name;
+Patron(const std::string& name, const std::string& libraryCardNumber){}: name(name), libraryCardNumber(libraryCardNumber)
+
+std::string Patron::getName() const { 
+    return name; 
+}
+void Patron::setName(const std::string& name) { 
+    this->name = name; 
+}
+std::string Patron::getLibraryCardNumber() const { 
+    return libraryCardNumber; 
+}
+void Patron::setLibraryCardNumber(const int& libraryCardNumber) { 
+    this->libraryCardNumber = libraryCardNumber; 
 }
 
-// Getter for Library Card Number
-std::string Patron::getLibraryCardNumber() const {
-    return libraryCardNumber;
-}
-
-// Setter for Name
-void Patron::setName(const std::string& newName) {
-    name = newName;
-}
-
-// Setter for Library Card Number
-void Patron::setLibraryCardNumber(const std::string& newCardNumber) {
-    libraryCardNumber = newCardNumber;
-}
-
-// Update Contact Info
+// Updating the contact info
 void Patron::updateContactInfo(const std::string& newContactInfo) {
-    contactInfo = newContactInfo;
-    std::cout << "Contact information updated to: " << contactInfo << "\n";
+    setName(newContactInfo);
 }
 
-// Check if Patron Can Borrow More Books
+// To check if patron can borrow more books
 bool Patron::canBorrowMoreBooks(int currentBorrowedCount, int maxLimit) const {
-    if (currentBorrowedCount < maxLimit) {
-        std::cout << "Patron can borrow more books.\n";
-        return true;
-    } else {
-        std::cout << "Patron has exceeded the maximum limit and cannot borrow more books.\n";
-        return false;
-    }
+    return currentBorrowedCount < maxLimit;
 }

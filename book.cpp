@@ -11,26 +11,26 @@ public:
     Book(const std::string& title = "", const std::string& author = "", const std::string& isbn = "")
         : title(title), author(author), isbn(isbn) {}
 
-    std::string getTitle() const {
+    std::string gettitle() const {
         return title;
     }
 
-    std::string getAuthor() const {
+    std::string getauthor() const {
         return author;
     }
-    std::string getISBN() const {
+    std::string getisbn() const {
         return isbn;
     }
 
-    void setTitle(const std::string& newTitle) {
+    void settitle(const std::string& newTitle) {
         title = newTitle;
     }
 
-    void setAuthor(const std::string& newAuthor) {
+    void setauthor(const std::string& newAuthor) {
         author = newAuthor;
     }
 
-    void setISBN(std::string& newISBN) {
+    void setisbn(std::string& newISBN) {
         isbn = newISBN;
     }
 

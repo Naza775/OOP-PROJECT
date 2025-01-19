@@ -3,28 +3,41 @@
 #include <string>
 #include<iostream>
 
-class LibraryItem{
+class LibraryItem {
 private:
-    std::string title;
-    bool isCheckedOut;
-    std::string dueDate;
+    std::string title;  
+    std::string isbn;     
+    std::string author;
+    bool isCheckedOut;        
+    int dueDate;     
+
 public:
-    LibraryItem(){};
-    LibraryItem(const std::string& title, const std::string& dueDate, bool isCheckedOut):title(title),dueDate(dueDate),isCheckedOut(isCheckedOut){};
-
-    //~LibraryItem(){};
-
-    void inputItem(){};
-    void displayItem() const{};
-
-    void setTitle(const std::string& title){};
-    std::string getTitle() const{};
-
-    void setIsCheckedOut(bool isCheckedOut ){};
-    bool getIsCheckedOut() {};
-
-    void setDueDate( const std::string& dueDate){};
-    std::string getDueDate() const{};
     
+    LibraryItem(const std::string& title,const std::string& author, const std::string& ISBN){};
+     
+    std::string getTitle() const{return title;};
+    bool getIsCheckedOut() const{return isCheckedOut;};
+    int getDueDate() const{return dueDate;};
+    std::string getISBN() const{return isbn;};
+    std::string getAuthor() const{return author;};
+    
+    void setTitle(const std::string& title){this->title =title;};
+    void setIsCheckedOut(bool status){isCheckedOut = status;};
+    void setDueDate(const int& dueDate){this->dueDate = dueDate; };
+    void setISBN(const std::string& isbn){this->isbn = isbn; };
+    void setAuthor(const std::string& author){this-> author= author; };
+    
+    
+    
+    virtual void checkOut(){};
+    virtual void returnItem(){};
+    virtual void renewItem(int extraDays){};
+    virtual void markAsLost(){};
+    virtual void printDetails() const=0;
+    virtual int calculateLateFees(int daysOverdue) const=0;
+
+
+    virtual ~LibraryItem() {};
 };
-#endif //LIBRARY_ITEM_H
+
+#endif

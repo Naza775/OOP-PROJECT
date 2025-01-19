@@ -2,10 +2,6 @@
 #include <string>
 #include "book_item.h"
 
-
-#include <iostream>
-#include <string>
-
 class LibraryItem {
 private:
     std::string title;

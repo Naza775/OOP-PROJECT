@@ -27,4 +27,4 @@ public:
     void viewTransactionHistory(const std::string& patronCardNumber) const{};
 
 }
-#endif
+#endif //LIBRARY_H

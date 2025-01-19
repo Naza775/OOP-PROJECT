@@ -1,5 +1,10 @@
 #include <iostream>
 #include <string>
+#include "book_item.h"
+
+
+#include <iostream>
+#include <string>
 
 class LibraryItem {
 private:
@@ -7,8 +12,7 @@ private:
     bool isAvailable;
 
 public:
-    LibraryItem(const std::string& title, bool isAvailable = true)
-        : title(title), isAvailable(isAvailable) {};
+    LibraryItem(const std::string& title, bool isAvailable = true): title(title), isAvailable(isAvailable) {}
 
     void printDetails() const {
         std::cout << "Title: " << title << std::endl;

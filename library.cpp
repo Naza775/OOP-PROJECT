@@ -1,6 +1,8 @@
 #include "library.h"
 #include <iostream>
 #include <vector>
+#include <algorithm>
+
 
 
 void Library::addBook(const BookItem& book) {
@@ -31,7 +33,7 @@ void Library::borrowBook(const std::string& isbn, const std::string& patronCardN
 }
 
 void Library::returnBook(const std::string& isbn, const std::string& patronCardNumber) {
-    for (size_t i = 0; i < patrons.size(); ++i) {
+    for (int i = 0; i < patrons.size(); ++i) {
         if (patrons[i].getLibraryCardNumber() == patronCardNumber) {
             patronRecords[i].removeBook(isbn);
             break;

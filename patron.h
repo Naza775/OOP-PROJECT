@@ -16,7 +16,9 @@ public:
     void setName(const std::string& newName){};
     void setLibraryCardNumber(const std::string& newCardNumber){};
     void updateContactInfo(const std::string& newContactInfo){};
-    bool canBorrowMoreBooks(int currentBorrowedCount, int maxLimit) const{};
-};
+    bool canBorrowMoreBooks(int currentBorrowedCount, int maxLimit) const {
+        return currentBorrowedCount < maxLimit;  
+    }
+}
 
 #endif // PATRON_H
